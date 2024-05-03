@@ -1,6 +1,6 @@
 import { FieldAppSDK } from '@contentful/app-sdk';
 import { Paragraph,  } from '@contentful/f36-components';
-import {  useCMA,  useFieldValue,  useSDK } from '@contentful/react-apps-toolkit';
+import {  useAutoResizer, useCMA,  useFieldValue,  useSDK } from '@contentful/react-apps-toolkit';
 import { useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 
@@ -10,6 +10,7 @@ const Field = () => {
   const cma = useCMA();
   const editorRef = useRef<any>(null); 
   const [value, setValue] = useFieldValue<string>(sdk.field.id, 'en-US');
+  useAutoResizer();
 
   const log = () => {
     if (editorRef.current) {
@@ -19,13 +20,6 @@ const Field = () => {
     console.log(sdk, cma);
   };
 
-  /*
-     To use the cma, inject it as follows.
-     If it is not needed, you can remove the next line.
-  */
-  // If you only want to extend Contentful's default editing experience
-  // reuse Contentful's editor components
-  // -> https://www.contentful.com/developers/docs/extensibility/field-editors/
   return <>
   <div style={{display: 'flex', flexDirection: 'column'}}>
   <Editor
