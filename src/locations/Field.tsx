@@ -22,7 +22,7 @@ const Field = () => {
   return <>
   <div style={{display: 'flex', flexDirection: 'column'}}>
   <Editor
-        onChange={()=>console.log('changed')}
+        onKeyPress={()=>console.log('changed')}
         apiKey='ew3aymb0j6kompypnggrtkkk90goygpbj5fz3hz6cd57d5gy'
         onInit={(_evt, editor) => editorRef.current = editor}
         initialValue="<p>This is the initial content of the editor.</p>"
