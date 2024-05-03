@@ -1,6 +1,6 @@
 import { FieldAppSDK } from '@contentful/app-sdk';
 import { Paragraph,  } from '@contentful/f36-components';
-import {  useCMA,  useSDK } from '@contentful/react-apps-toolkit';
+import {  useCMA,  useFieldValue,  useSDK } from '@contentful/react-apps-toolkit';
 import { useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 
@@ -8,11 +8,13 @@ import { Editor } from '@tinymce/tinymce-react';
 const Field = () => {
   const sdk = useSDK<FieldAppSDK>();
   const cma = useCMA();
-  const editorRef = useRef<any>(null); // Using `any` temporarily for editorRef
+  const editorRef = useRef<any>(null); 
+  const [value, setValue] = useFieldValue<string>(sdk.field.id, 'en-US');
 
   const log = () => {
     if (editorRef.current) {
       console.log(editorRef.current.getContent());
+      setValue(editorRef.current.getContent());
     }
     console.log(sdk, cma);
   };
@@ -47,6 +49,7 @@ const Field = () => {
       />
       <button onClick={log}>Log editor content</button>
     </div>
+    <input value={value ?? ''} onChange={(e) => setValue(e.target.value)} />
   <Paragraph>Hello Entry Field Component (AppId: {sdk.ids.app})</Paragraph></>;
 };
 
