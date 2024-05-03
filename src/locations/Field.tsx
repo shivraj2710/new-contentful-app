@@ -21,7 +21,7 @@ const Field = () => {
   };
 
   return <>
-  <div style={{display: 'flex', flexDirection: 'column', width: '900px'}}>
+  <div style={{display: 'flex', flexDirection: 'column'}}>
   <Editor
         apiKey='ew3aymb0j6kompypnggrtkkk90goygpbj5fz3hz6cd57d5gy'
         onInit={(_evt, editor) => editorRef.current = editor}
