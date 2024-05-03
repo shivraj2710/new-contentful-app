@@ -14,10 +14,9 @@ const Field = () => {
 
   const log = () => {
     if (editorRef.current) {
-      console.log(editorRef.current);
+      console.log(editorRef.current, "SDTEST");
       setValue(editorRef.current.getContent());
     }
-    console.log(sdk, cma);
   };
 
   return <>
