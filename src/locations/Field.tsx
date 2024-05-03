@@ -14,7 +14,7 @@ const Field = () => {
 
   const log = () => {
     if (editorRef.current) {
-      console.log(editorRef.current.getContent());
+      console.log(editorRef.current);
       setValue(editorRef.current.getContent());
     }
     console.log(sdk, cma);
