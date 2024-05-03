@@ -1,6 +1,6 @@
 import { FieldAppSDK } from '@contentful/app-sdk';
 import { useAutoResizer, useCMA, useFieldValue, useSDK } from '@contentful/react-apps-toolkit';
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 
 
@@ -8,6 +8,7 @@ const Field = () => {
   const sdk = useSDK<FieldAppSDK>();
   const editorRef = useRef<any>(null);
   const [value, setValue] = useFieldValue<string>(sdk.field.id, 'en-US');
+  const initialValue = useMemo(() => value, []);
   useAutoResizer();
 
   const log = () => {
@@ -22,7 +23,7 @@ const Field = () => {
         onKeyPress={log}
         apiKey='ew3aymb0j6kompypnggrtkkk90goygpbj5fz3hz6cd57d5gy'
         onInit={(_evt, editor) => editorRef.current = editor}
-        initialValue={value ?? ''}
+        initialValue={initialValue ?? ''}
         init={{
           height: 500,
           menubar: true,
