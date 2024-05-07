@@ -36,7 +36,7 @@ const Field = () => {
             'bold italic forecolor | alignleft aligncenter ' +
             'alignright alignjustify | bullist numlist outdent indent | ' +
             'removeformat | help',
-          content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px; color: red; }'
+          content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px; }'
         }}
       />
     </div>)
